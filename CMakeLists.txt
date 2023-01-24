@@ -13,11 +13,6 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 # set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin) set(LIBRARY_OUTPUT_PATH
 # ${CMAKE_SOURCE_DIR}/bin)
 
-include_directories(
-  ${CMAKE_SOURCE_DIR}/Source/include
-  ${CMAKE_SOURCE_DIR}/Source/portable/MemMang
-  ${CMAKE_SOURCE_DIR}/Source/portable/GCC/POSIX ${CMAKE_SOURCE_DIR}/Project)
-
 # link_directories (${CMAKE_SOURCE_DIR}/build/archive)
 
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -m32")
@@ -52,14 +47,20 @@ add_compile_options(
   -pthread
   -DMAX_NUMBER_OF_TASKS=300)
 
-add_executable(
-  ${projectName}
-  ./Source/croutine.c
-  ./Source/event_groups.c
-  ./Source/list.c
-  ./Source/queue.c
-  ./Source/tasks.c
-  ./Source/timers.c
-  ./Source/portable/MemMang/heap_3.c
-  ./Source/portable/GCC/POSIX/port.c
-  ./Project/main.c)
+include_directories(
+  ${CMAKE_SOURCE_DIR}/Source/include
+  ${CMAKE_SOURCE_DIR}/Source/portable/MemMang
+  ${CMAKE_SOURCE_DIR}/Source/portable/GCC/POSIX ${CMAKE_SOURCE_DIR}/Project)
+
+set(FREERTOS_SOURCE
+    ./Source/croutine.c
+    ./Source/event_groups.c
+    ./Source/list.c
+    ./Source/queue.c
+    ./Source/tasks.c
+    ./Source/timers.c
+    ./Source/portable/MemMang/heap_3.c
+    ./Source/portable/GCC/POSIX/port.c
+    ./Project/create_task.c)
+
+add_executable(create_task ${FREERTOS_SOURCE})

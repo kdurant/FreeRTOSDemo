@@ -60,7 +60,12 @@ set(FREERTOS_SOURCE
     ./Source/tasks.c
     ./Source/timers.c
     ./Source/portable/MemMang/heap_3.c
-    ./Source/portable/GCC/POSIX/port.c
-    ./Project/create_task.c)
+    ./Source/portable/GCC/POSIX/port.c)
 
-add_executable(create_task ${FREERTOS_SOURCE})
+add_executable(create_task ${FREERTOS_SOURCE} ./Project/create_task.c)
+add_executable(idle_app ${FREERTOS_SOURCE} ./Project/idle_app.c)
+add_executable(task_priority ${FREERTOS_SOURCE} ./Project/task_priority.c)
+add_executable(tick_count ${FREERTOS_SOURCE} ./Project/tick_count.c)
+add_executable(event_group ${FREERTOS_SOURCE} ./Project/event_group.c)
+add_executable(timer ${FREERTOS_SOURCE} ./Project/soft_timer.c)
+add_executable(queue ${FREERTOS_SOURCE} ./Project/queue.c)

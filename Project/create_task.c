@@ -1,14 +1,10 @@
-
-/* Standard includes. */
 #include <stdio.h>
 #include <stdlib.h>
-#include "FreeRTOS.h" /* RTOS firmware */
-#include "task.h"     /* Task */
+#include "FreeRTOS.h"
+#include "task.h"
 #include "timers.h"
 //#include "queue.h"
-/* Examples */
 
-/* --------------------------------------------- */
 void vTask1(void*);
 void vTask2(void*);
 void vTask3(void*);

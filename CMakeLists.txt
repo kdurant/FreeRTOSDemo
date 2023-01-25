@@ -50,7 +50,7 @@ add_compile_options(
 include_directories(
   ${CMAKE_SOURCE_DIR}/Source/include
   ${CMAKE_SOURCE_DIR}/Source/portable/MemMang
-  ${CMAKE_SOURCE_DIR}/Source/portable/GCC/POSIX ${CMAKE_SOURCE_DIR}/Project)
+  ${CMAKE_SOURCE_DIR}/Source/portable/GCC/POSIX ${CMAKE_SOURCE_DIR}/user)
 
 set(FREERTOS_SOURCE
     ./Source/croutine.c
@@ -62,10 +62,10 @@ set(FREERTOS_SOURCE
     ./Source/portable/MemMang/heap_3.c
     ./Source/portable/GCC/POSIX/port.c)
 
-add_executable(create_task ${FREERTOS_SOURCE} ./Project/create_task.c)
-add_executable(idle_app ${FREERTOS_SOURCE} ./Project/idle_app.c)
-add_executable(task_priority ${FREERTOS_SOURCE} ./Project/task_priority.c)
-add_executable(tick_count ${FREERTOS_SOURCE} ./Project/tick_count.c)
-add_executable(event_group ${FREERTOS_SOURCE} ./Project/event_group.c)
-add_executable(timer ${FREERTOS_SOURCE} ./Project/soft_timer.c)
-add_executable(queue ${FREERTOS_SOURCE} ./Project/queue.c)
+add_executable(create_task ${FREERTOS_SOURCE} ./user/create_task.c)
+add_executable(idle_app ${FREERTOS_SOURCE} ./user/idle_app.c)
+add_executable(task_priority ${FREERTOS_SOURCE} ./user/task_priority.c)
+add_executable(tick_count ${FREERTOS_SOURCE} ./user/tick_count.c)
+add_executable(event_group ${FREERTOS_SOURCE} ./user/event_group.c)
+add_executable(timer ${FREERTOS_SOURCE} ./user/soft_timer.c)
+add_executable(queue ${FREERTOS_SOURCE} ./user/queue.c)

@@ -13,6 +13,17 @@ sudo apt-get install libc6-dev-i386
 - prv : (private)static函数，c文件内部使用
 - v: void函数
 
+# 例子
+- [创建任务](./user/create_task.c)
+
+## 队列
+- [传输int数据]
+- [传输数组]
+    接收外设传输的数据时，先将数据放到队列里，然后其他任务再慢慢处理，防止可能出现丢数据的情况
+
+# 优先级
+FreeRTOS的优先级数值越小，任务优先级越低，空闲任务的优先级是 0
+
 
 # 相关文档
 [韦东山freeRTOS系列教程](https://blog.csdn.net/thisway_diy/article/details/121399484)       

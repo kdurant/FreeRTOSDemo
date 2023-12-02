@@ -57,7 +57,7 @@
 #include <pthread.h>
 #include <sched.h>
 #include <signal.h>
-#include <errno.h>
+//#include <errno.h>
 #include <sys/time.h>
 #include <time.h>
 #include <sys/times.h>

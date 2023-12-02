@@ -50,6 +50,7 @@ void Task2(void* pvParameters)
 
 int main(void)
 {
+    // 一般情况下队列不应该属于某个具体的任务
     xQueue = xQueueCreate(128, sizeof(int));
 
     xTaskCreate(Task1, "Task1", 1024, NULL, 4, xHandleTask1);

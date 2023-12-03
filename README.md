@@ -13,8 +13,40 @@ sudo apt-get install libc6-dev-i386
 - prv : (private)static函数，c文件内部使用
 - v: void函数
 
+# 优先级
+FreeRTOS的优先级数值越小，任务优先级越低，空闲任务的优先级是 0。
+configMAX_PRIORITIES值越大，内核花销的内存空间就越大
+
+# 调度方式
+- 时间片轮转
+- 抢占式
+- configUSE_TIME_SLICING 控制
+
+# 内存
+## 分配算法
+![](https://pic4.zhimg.com/80/v2-e802afa55069db8742d63f57bfaf5557_720w.webp)
+## API 
+xPortGetFreeHeapSize();
+
 # 例子
-- [创建任务](./user/create_task.c)
+## 任务
+1. 抢占式调度总是选择具有最高优先级的可运行任务来执行. 如果高优先级任务没有主动退出运行态，低等级任务无法得到运行 
+- [任务优先级](./user/task1.c)
+此例中, vTask1任务优先级最高，且一直在无限循环，所有其他任务得不到执行
+taskYIELD()将当前任务主动放弃CPU的执行权，使得其他优先级相同的任务有机会执行。
+但taskYIELD()时，相同优先级的任务可能不是就绪态，浪费此次机会。因此任务运行次数会大量减少
+
+```c
+void vTask1(void* parameter)
+{
+    while(1)
+    {
+        taskYIELD();
+    }
+}
+```
+
+- [任务栈溢出检测](./user/task2.c)
 
 ## 信号量
 使用场景:
@@ -27,9 +59,6 @@ sudo apt-get install libc6-dev-i386
 ## 事件标志组(EventGroup)
 使用信号量来同步的话任务只能与单个的事件或任务进行同步。
 有时候某个任务可能会需要与多个事件或任务进行同步, 这时即可以使用事件标志组
-
-# 优先级
-FreeRTOS的优先级数值越小，任务优先级越低，空闲任务的优先级是 0
 
 
 # 相关文档

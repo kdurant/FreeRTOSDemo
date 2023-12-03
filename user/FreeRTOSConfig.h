@@ -25,7 +25,7 @@
 #define configUSE_16_BIT_TICKS               0
 #define configIDLE_SHOULD_YIELD              1
 #define configUSE_MUTEXES                    1
-#define configCHECK_FOR_STACK_OVERFLOW       0 /* Do not use this option on the PC port. */
+#define configCHECK_FOR_STACK_OVERFLOW       1 /* Do not use this option on the PC port. */
 #define configUSE_RECURSIVE_MUTEXES          1
 #define configQUEUE_REGISTRY_SIZE            20
 #define configUSE_MALLOC_FAILED_HOOK         0
